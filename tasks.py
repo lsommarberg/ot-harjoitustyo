@@ -10,8 +10,11 @@ def test(ctx):
     ctx.run("pytest src/tests", pty=True)
 
 
+
 @task
-def coverage_report(ctx):
+def coverage(ctx):
     ctx.run("coverage run -m pytest src/tests", pty=True)
-    ctx.run("coverage report", pty=True)
+
+@task(coverage)
+def coverage_report(ctx):
     ctx.run("coverage html", pty=True)
