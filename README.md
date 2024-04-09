@@ -1,11 +1,37 @@
-# Ohjelmistotekniikka, harjoitustyö
+# Ohjelmistotekniikka, SudokuApp
 
-**Harjoitustyön** aiheena teen *sudoku*-sovelluksen.
+## Dokumentaatio:
 
-[Linkki laskareihin](laskarit)
+- [Määrittelydokumentti](documents/maarittely.md)
+- [Changelog](documents/changelog.md)
+- [Työaikakirjanpito](documents/tuntikirjanpito.md)
+  
 
-[Linkki työaikakirjanpitoon](documents/tuntikirjanpito.md)
+## Asennus
 
-[Linkki määrittelydokumenttiin](documents/maarittely.md)
+1. Kloonaa repositorio omalle koneellesi.
+   
+2. Siirry repositorioon, ja asenna riippuvuudet Poetryn avulla:
+    ```
+    poetry install
+    ```
+    
+3. Aktivoi virtuaaliympäristö komennolla:
+    ```
+    poetry shell
+    ```
+4. Käynnistä sovellus komennolla:
+    ```
+    poetry run invoke start
+    ```
 
-[Linkki changelog-tiedostoon](documents/changelog.md)
+
+## Testaus
+
+Voit ajaa testit komennolla:
+
+    poetry run invoke test
+
+Ja luoda testikattavuusraportin komennolla:
+
+    poetry run invoke coverage-report
