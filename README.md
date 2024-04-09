@@ -7,3 +7,5 @@
 [Linkki työaikakirjanpitoon](documents/tuntikirjanpito.md)
 
 [Linkki määrittelydokumenttiin](documents/maarittely.md)
+
+[Linkki changelog-tiedostoon](documents/changelog.md)

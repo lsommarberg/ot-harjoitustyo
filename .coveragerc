@@ -1,0 +1,13 @@
+[run]
+omit =
+    */venv/*
+    */.venv/*
+    */.poetry/*
+    */.pytest_cache/*
+    */tests/*
+    */__init__.py
+    */laskarit/*
+
+
+[report]
+show_missing = True
