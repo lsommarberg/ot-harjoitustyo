@@ -3,7 +3,7 @@ classDiagram
     class SudokuApp {
         - root: tk.Tk
         - board: Board
-        - entry: SudokuEntry
+        - sudoku_board: SudokuBoard
         - button_panel: ButtonPanel
         + __init__(root, puzzle)
         + initialize_board(puzzle)
