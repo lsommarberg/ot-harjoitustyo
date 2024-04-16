@@ -52,6 +52,7 @@ class SudokuButton(tk.Button):
             bd=0,
             relief="solid",
             command=self.cell_clicked,
+            bg="black"
         )
         self.row = row
         self.col = col
