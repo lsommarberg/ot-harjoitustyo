@@ -40,3 +40,5 @@ class Board:
                 for col in range(9):
                     cell_value = previous_state[row][col].get_value()
                     self.grid[row][col].set_value(cell_value)
+        else:
+            pass

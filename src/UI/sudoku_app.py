@@ -27,10 +27,5 @@ class SudokuApp:
 
         self.sudoku_board.update_buttons()
 
-        screen_width = self.root.winfo_screenwidth()
-        screen_height = self.root.winfo_screenheight()
-
-        width = int(screen_width * 0.5)
-        height = int(screen_height * 0.5)
-
-        self.root.geometry(f"{width}x{height}")
+        self.root.geometry("600x600")
+        

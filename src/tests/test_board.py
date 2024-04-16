@@ -69,7 +69,7 @@ class TestBoard(unittest.TestCase):
         board = Board()
 
         board.initialize_grid(self.example_puzzle)
-        board.update_stack()
+
         stack = board.undo_stack
 
         board.set_cell_value(0, 2, 1)

@@ -59,13 +59,14 @@ class SudokuButton(tk.Button):
         self.default_bg = self.cget("bg")
 
         self.bind("<Key>", self.key_pressed)
+        self.bind("<FocusIn>", self.on_focus_in)
+        self.bind("<FocusOut>", self.on_focus_out)
 
     def set_value(self, value, color=None):
         if value != "0":
             self.config(text=value, fg=color)
         else:
             self.config(text="", state="normal")
-        self.config(borderwidth=0, highlightbackground=self.default_bg)
 
     def cell_clicked(self):
         current_cell = self.board.get_cell(self.row, self.col)
@@ -81,3 +82,9 @@ class SudokuButton(tk.Button):
             if new_value:
                 self.board.update_stack()
                 self.set_value(str(value), color="blue")
+
+    def on_focus_in(self, _):
+        self.config(highlightbackground="red")
+
+    def on_focus_out(self, _):
+        self.config(highlightbackground=self.default_bg)
