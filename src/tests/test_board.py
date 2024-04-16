@@ -26,8 +26,58 @@ class TestBoard(unittest.TestCase):
 
     def test_set_cell_value(self):
         board = Board()
+        board.initialize_grid(self.example_puzzle)
 
         board.set_cell_value(0, 2, 1)
 
         result = board.get_cell(0, 2)
         self.assertEqual(result.get_value(), 1)
+
+    def test_set_cell_value_for_locked_cell(self):
+        board = Board()
+        board.initialize_grid(self.example_puzzle)
+        set_value = board.set_cell_value(0, 0, 1)
+
+        result = board.get_cell(0, 0)
+        self.assertEqual(result.get_value(), 5)
+        self.assertFalse(set_value)
+
+    def test_lock_cell(self):
+        board = Board()
+        board.lock_cell(0, 0)
+
+        locked_cell = board.get_cell(0, 0)
+        result = locked_cell.is_locked
+        self.assertTrue(result)
+
+    def test_update_stack(self):
+        board = Board()
+
+        board.initialize_grid(self.example_puzzle)
+        board.update_stack()
+
+        stack = board.undo_stack
+
+        stack_instance = stack[0]
+        stack_instance_first_cell = stack_instance[0][0].get_value()
+
+        first_cell = board.get_cell(0, 0).value
+
+        self.assertEqual(stack_instance_first_cell, first_cell)
+
+    def test_undo_move(self):
+        board = Board()
+
+        board.initialize_grid(self.example_puzzle)
+        board.update_stack()
+        stack = board.undo_stack
+
+        board.set_cell_value(0, 2, 1)
+        board.update_stack()
+
+        board.undo_move()
+
+        stack_instance = stack[0]
+        stack_instance_modified_cell = stack_instance[0][2].get_value()
+
+        self.assertEqual(stack_instance_modified_cell, 0)

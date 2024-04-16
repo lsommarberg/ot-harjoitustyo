@@ -9,3 +9,13 @@
 - Lisätty Cell-luokka, joka vastaa ruutujen sisällöstä
 - Lisätty Board-luokka, joka pitää yllä pelilautaa (ruudukkoa)
 - Testattu Board-luokan ja Cell-luokan funktioita
+
+
+## Viikko 4
+
+- Käyttäjä voi käynnistää pelin ja asettaa arvoja ruudukkoon
+- Käyttäjä voi perua siirron 'Undo'-nappulasta
+- Muokattu luokkia: 
+  - Poistettu Entry luokka, ja lukujen asettamisesta ruudukkoon vastaa SuodkuButton ja SudokuBoard -luokat
+- Tehty nappula, josta siirron voi perua, sekä funktiot sen toimintaan
+- Testattu Board-luokan uudet funktiot

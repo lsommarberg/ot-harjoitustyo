@@ -5,3 +5,7 @@
 | 5.4.  | 2      | Luokkien suunnittelu           |
 | 8.4.  | 4      | Alustava käyttöliittymä, koodin runko valmiina, testejä |
 | 9.4.  | 3      | Dokumentaatio, testaus etätyöpöydällä |
+| 11.4. | 2      | Muutoksia käyttöliittymän ulkoasuun |
+| 12.4. | 2      | Muutoksia toimintalogiikkaan käyttäjän syötteiden osalta |
+| 15.4. | 3      | Undo-nappula, testaus |
+| Yht.  | 20 

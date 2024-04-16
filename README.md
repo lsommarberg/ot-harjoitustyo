@@ -5,6 +5,7 @@
 - [Määrittelydokumentti](documents/maarittely.md)
 - [Changelog](documents/changelog.md)
 - [Työaikakirjanpito](documents/tuntikirjanpito.md)
+- [Arkkitehtuuri](documents/arkkitehtuuri.md)
   
 
 ## Asennus
@@ -24,6 +25,7 @@
     ```
     poetry run invoke start
     ```
+5. Voit pelata sudokua klikkaamalla ruutua ja syöttämällä ruutuihin arvoja 1-9. Voit tyhjentää ruudun arvolla 0, ja peruuttaa siirron 'Undo'-napista.
 
 
 ## Testaus
@@ -35,3 +37,9 @@ Voit ajaa testit komennolla:
 Ja luoda testikattavuusraportin komennolla:
 
     poetry run invoke coverage-report
+
+## Pylint
+
+Voit luoda pylint raportin komennolla:
+
+    poetry run invoke lint
