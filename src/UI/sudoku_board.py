@@ -56,6 +56,7 @@ class SudokuButton(tk.Button):
         self.row = row
         self.col = col
         self.board = board
+        self.default_bg = self.cget("bg")
 
         self.bind("<Key>", self.key_pressed)
 
@@ -64,11 +65,13 @@ class SudokuButton(tk.Button):
             self.config(text=value, fg=color)
         else:
             self.config(text="", state="normal")
+        self.config(borderwidth=0, highlightbackground=self.default_bg)
 
     def cell_clicked(self):
         current_cell = self.board.get_cell(self.row, self.col)
+
         if not current_cell.is_locked:
-            self.config(bg="red")
+            self.config(highlightbackground="red")
             self.focus_set()
 
     def key_pressed(self, event):
