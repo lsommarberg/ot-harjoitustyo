@@ -33,10 +33,10 @@ class TestBoard(unittest.TestCase):
         result = board.get_cell(0, 2)
         self.assertEqual(result.get_value(), 1)
 
-    def test_set_cell_value_for_locked_cell(self):
+    def test_make_move_for_locked_cell(self):
         board = Board()
         board.initialize_grid(self.example_puzzle)
-        set_value = board.set_cell_value(0, 0, 1)
+        set_value = board.make_move(0, 0, 1)
 
         result = board.get_cell(0, 0)
         self.assertEqual(result.get_value(), 5)
@@ -72,12 +72,13 @@ class TestBoard(unittest.TestCase):
 
         stack = board.undo_stack
 
-        board.set_cell_value(0, 2, 1)
-        board.update_stack()
+        board.make_move(0, 2, 1)
 
         board.undo_move()
 
-        stack_instance = stack[0]
-        stack_instance_modified_cell = stack_instance[0][2].get_value()
+        self.assertEqual(board.get_cell(0, 2).value, 0)
 
-        self.assertEqual(stack_instance_modified_cell, 0)
+
+
+        
+

@@ -14,13 +14,9 @@ def lint(ctx):
     ctx.run("pylint src")
 
 @task
-def coverage(ctx):
+def coverage_report(ctx):
     ctx.run("coverage run -m pytest src/tests", pty=True)
 
-@task(coverage)
-def coverage_report(ctx):
-    ctx.run("coverage report", pty=True)
-
-@task(coverage)
+@task(coverage_report)
 def coverage_html(ctx):
     ctx.run("coverage html", pty=True)

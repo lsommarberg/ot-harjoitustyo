@@ -6,9 +6,9 @@ class SudokuBoard(tk.Frame):
         super().__init__(parent)
         self.board = board
         self.buttons = [[None for _ in range(9)] for _ in range(9)]
-        self.undo_stack = []
 
         self.create_buttons()
+
 
         self.bind_buttons()
 
@@ -39,7 +39,10 @@ class SudokuBoard(tk.Frame):
     def undo_button(self):
         self.board.undo_move()
         self.update_buttons()
+    
 
+
+    
 
 class SudokuButton(tk.Button):
     def __init__(self, parent, row, col, board):
@@ -78,9 +81,8 @@ class SudokuButton(tk.Button):
     def key_pressed(self, event):
         if event.char.isdigit():
             value = int(event.char)
-            new_value = self.board.set_cell_value(self.row, self.col, value)
+            new_value = self.board.make_move(self.row, self.col, value)
             if new_value:
-                self.board.update_stack()
                 self.set_value(str(value), color="blue")
 
     def on_focus_in(self, _):
