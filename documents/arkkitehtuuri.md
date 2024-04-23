@@ -62,3 +62,31 @@ classDiagram
     SudokuBoard --> SudokuButton
     SudokuBoard --> Board
     Board --> Cell
+
+```
+
+
+
+```mermaid
+sequenceDiagram
+    title: Notes Addition Sequence
+    participant User
+    participant Interface
+    participant SudokuBoard
+    participant SudokuButton
+    participant Board
+    participant Cell
+
+    User->>Interface: cell_click()
+    Interface->>SudokuButton: key_pressed(event, value)
+    SudokuButton->>Board: modify_notes(row, col, value)
+    Board->>Board: Retrieve cell object for (row, col)
+    Board->>Board: Return cell object
+    Board->>Cell: set_notes(value)
+    Cell->>Board: 
+    Board->>SudokuButton: 
+    SudokuButton->>SudokuBoard: update_buttons()
+    SudokuBoard->>SudokuButton: set_value(cell_value, cell_is_locked, cell_notes, display_notes)
+    SudokuButton->>Interface: Update button display with new notes
+
+```
