@@ -26,4 +26,4 @@ class SudokuApp:
 
         self.sudoku_board.update_buttons()
 
-        self.root.geometry("600x600")
+        self.root.geometry("700x700")

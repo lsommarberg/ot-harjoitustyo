@@ -6,7 +6,7 @@ class Board:
     def __init__(self):
         self.grid = [[Cell() for _ in range(9)] for _ in range(9)]
         self.undo_stack = []
-    
+        self.previous_state = None
 
     def initialize_grid(self, puzzle):
         for i in range(9):
@@ -25,29 +25,51 @@ class Board:
             cell.set_value(value)
             return True
         return False
-    
+
     def make_move(self, row, col, value):
-        cell = self.get_cell(row, col)
-        if not cell.is_locked:
-            self.update_stack()
         set_value = self.set_cell_value(row, col, value)
         if set_value:
+            cell = self.get_cell(row, col)
+            cell.display_notes = False
             return True
         return False
+
+    def modify_notes(self, row, col, value):
+        cell = self.get_cell(row, col)
+        cell.display_notes = True
+        cell.set_notes(value)
+        return cell.notes
 
     def lock_cell(self, row, col):
         cell = self.get_cell(row, col)
         cell.lock_cell()
 
     def update_stack(self):
-        self.undo_stack.append(copy.deepcopy(self.grid))
-        
-    def set_state(self, state):
-        self.grid = copy.deepcopy(state)
+        grid_copy = [[Cell() for _ in range(9)] for _ in range(9)]
 
+        for i in range(9):
+            for j in range(9):
+                cell = self.get_cell(i, j)
+                cell_value = cell.get_value()
+                cell_notes = cell.get_notes()
+                cell_is_locked = cell.is_locked
+                cell_display_notes = cell.display_notes
+                grid_copy[i][j].set_value(cell_value)
+                grid_copy[i][j].notes = copy.deepcopy(cell_notes)
+                grid_copy[i][j].is_locked = cell_is_locked
+                grid_copy[i][j].display_notes = cell_display_notes
+
+        self.undo_stack.append(grid_copy)
 
     def undo_move(self):
-        
         if self.undo_stack:
             previous_state = self.undo_stack.pop()
-            self.set_state(previous_state)
+            for i in range(9):
+                for j in range(9):
+                    cell_value = previous_state[i][j].get_value()
+                    self.grid[i][j].set_value(cell_value)
+                    cell_notes = previous_state[i][j].get_notes()
+
+                    self.grid[i][j].notes = copy.deepcopy(cell_notes)
+                    cell_display_notes = previous_state[i][j].display_notes
+                    self.grid[i][j].display_notes = cell_display_notes

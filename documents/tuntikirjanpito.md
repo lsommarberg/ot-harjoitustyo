@@ -8,4 +8,7 @@
 | 11.4. | 2      | Muutoksia käyttöliittymän ulkoasuun |
 | 12.4. | 2      | Muutoksia toimintalogiikkaan käyttäjän syötteiden osalta |
 | 15.4. | 3      | Undo-nappula, testaus |
-| Yht.  | 20 
+| 20.4. | 3      | Muistiinpanojen lisääminen aloitettu, korjattu undo-nappulan toimintaa |
+| 22.4. | 3      | Muistiinpanojen lisääminen jatkuu, testejä |
+| 23.4. | 5      | Debuggaus, dokumentaatio |
+| Yht.  | 29 

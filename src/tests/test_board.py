@@ -67,10 +67,8 @@ class TestBoard(unittest.TestCase):
 
     def test_undo_move(self):
         board = Board()
-
         board.initialize_grid(self.example_puzzle)
-
-        stack = board.undo_stack
+        board.update_stack()
 
         board.make_move(0, 2, 1)
 
@@ -78,7 +76,25 @@ class TestBoard(unittest.TestCase):
 
         self.assertEqual(board.get_cell(0, 2).value, 0)
 
+    def test_modify_notes_no_notes(self):
+        board = Board()
+        board.initialize_grid(self.example_puzzle)
 
+        board.modify_notes(0, 2, 1)
 
-        
+        modified_cell_notes = board.get_cell(0, 2).get_notes()
 
+        expected_notes = [1, 0, 0, 0, 0, 0, 0, 0, 0]
+        self.assertEqual(modified_cell_notes, expected_notes)
+
+    def test_modify_notes_remove_note(self):
+        board = Board()
+        board.initialize_grid(self.example_puzzle)
+
+        board.modify_notes(0, 2, 1)
+        board.modify_notes(0, 2, 1)
+
+        modified_cell_notes = board.get_cell(0, 2).get_notes()
+
+        expected_notes = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        self.assertEqual(modified_cell_notes, expected_notes)

@@ -19,3 +19,14 @@
   - Poistettu Entry luokka, ja lukujen asettamisesta ruudukkoon vastaa SuodkuButton ja SudokuBoard -luokat
 - Tehty nappula, josta siirron voi perua, sekä funktiot sen toimintaan
 - Testattu Board-luokan uudet funktiot
+
+
+
+## Viikko 5
+
+- Käyttäjä voi lisätä muistiinpanoja
+- Käyttäjä voi perua siirron/muistiinpanon undo-nappulasta
+- Lisätty funktioita ja muokattu luokkia: 
+  - funktiot muistiinpanojen lisäämiseen/poistoon
+  - lisätty toiminnallisuus UI-luokkiin
+- Testattu Board-luokan uudet funktiot
