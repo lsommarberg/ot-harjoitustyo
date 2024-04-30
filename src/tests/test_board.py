@@ -76,6 +76,29 @@ class TestBoard(unittest.TestCase):
 
         self.assertEqual(board.get_cell(0, 2).value, 0)
 
+    def test_undo_move_stack_is_full(self):
+        board = Board()
+
+        board.max_undo_length=3
+        board.update_stack()
+        board.make_move(0, 2, 1)
+
+        board.update_stack()
+        board.make_move(0, 2, 2)
+
+        board.update_stack()
+        board.make_move(0, 2, 3)
+
+        board.update_stack()
+        board.make_move(0, 2, 4)
+
+        board.undo_move()
+        board.undo_move()
+        board.undo_move()
+        board.undo_move()
+
+        self.assertEqual(board.get_cell(0, 2).value, 1)
+
     def test_modify_notes_no_notes(self):
         board = Board()
         board.initialize_grid(self.example_puzzle)

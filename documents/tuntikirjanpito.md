@@ -11,4 +11,7 @@
 | 20.4. | 3      | Muistiinpanojen lisääminen aloitettu, korjattu undo-nappulan toimintaa |
 | 22.4. | 3      | Muistiinpanojen lisääminen jatkuu, testejä |
 | 23.4. | 5      | Debuggaus, dokumentaatio |
-| Yht.  | 29 
+| 25.4. | 3      | validointi |
+| 27.4. | 3      | testaus, debuggaus |
+| 29.4. | 3      | tietokanta käyttöön |
+| Yht.  | 38 
