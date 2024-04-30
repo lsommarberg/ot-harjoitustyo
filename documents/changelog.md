@@ -30,3 +30,12 @@
   - funktiot muistiinpanojen lisäämiseen/poistoon
   - lisätty toiminnallisuus UI-luokkiin
 - Testattu Board-luokan uudet funktiot
+
+
+## Viikko 6
+
+- Käyttäjä voi valita pelin vaikeustason
+- Lisätty DatabaseHandler-luokka säilyttämään sudokuja eri vaikeustasoilla
+- Testattu DatabaseHandler-luokka
+- Kirjoitettu docstring luokkiin ja funktioihin.
+- Muokattu koodia yksinkertaisempaan muotoon vanhoissa luokissa.

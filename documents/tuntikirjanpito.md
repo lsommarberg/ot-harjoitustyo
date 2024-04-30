@@ -14,4 +14,6 @@
 | 25.4. | 3      | validointi |
 | 27.4. | 3      | testaus, debuggaus |
 | 29.4. | 3      | tietokanta käyttöön |
-| Yht.  | 38 
+| 29.4. | 1      | tietokannan testaus |
+| 30.4. | 4      | docstring, dokumentaatio, testaus etätyöpöydällä |
+| Yht.  | 43 
