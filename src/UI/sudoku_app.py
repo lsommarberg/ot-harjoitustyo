@@ -30,7 +30,7 @@ class GameStartDialog:
         self.dialog = tk.Toplevel(parent)
         self.dialog.title("Select Difficulty")
 
-        self.dialog.lift()
+        self.dialog.transient(parent)
 
         self.label = tk.Label(self.dialog, text="Choose Difficulty:")
         self.label.pack()
@@ -109,15 +109,15 @@ class SudokuApp:
         puzzles = [
             (
                 "530070000600195000098000060800060003400803001700020006060000280000419005000080079",
-                "easy",
+                "Easy",
             ),
             (
                 "002008040000000000109000000000050207000000000305602000000000076000000000080104300",
-                "medium",
+                "Medium",
             ),
             (
                 "000000000090060000085000003600000040001300000050700000040000800000010002007000450",
-                "hard",
+                "Hard",
             ),
         ]
         for puzzle, difficulty in puzzles:

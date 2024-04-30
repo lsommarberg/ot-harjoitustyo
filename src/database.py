@@ -63,7 +63,7 @@ class DatabaseHandler:
         self.conn.commit()
 
     def get_puzzle_by_difficulty(self, difficulty):
-        """Retrieves a random Sudoku puzzle from the database based on the specified 
+        """Retrieves a random Sudoku puzzle from the database based on the specified
         difficulty level.
 
         Args:
@@ -85,7 +85,7 @@ class DatabaseHandler:
         """Retrieves all Sudoku puzzles from the database.
 
         Returns:
-            list: A list of tuples, where each tuple contains the puzzle string 
+            list: A list of tuples, where each tuple contains the puzzle string
             and its associated difficulty level.
 
         """
@@ -95,26 +95,3 @@ class DatabaseHandler:
     def close_connection(self):
         """Closes the connection to the SQLite database."""
         self.conn.close()
-
-    @staticmethod
-    def initialize_database(db_file):
-        """Initialize the database by creating necessary tables if they don't exist.
-
-        Args:
-            db_file (str): The path to the SQLite database file.
-
-        """
-        conn = sqlite3.connect(db_file)
-        cursor = conn.cursor()
-        cursor.execute(
-            """
-            CREATE TABLE IF NOT EXISTS puzzles (
-                id INTEGER PRIMARY KEY,
-                puzzle TEXT NOT NULL,
-                difficulty TEXT
-            )
-        """
-        )
-        conn.commit()
-        conn.close()
-        
