@@ -30,6 +30,8 @@ class GameStartDialog:
         self.dialog = tk.Toplevel(parent)
         self.dialog.title("Select Difficulty")
 
+        self.dialog.lift()
+
         self.label = tk.Label(self.dialog, text="Choose Difficulty:")
         self.label.pack()
 
@@ -78,8 +80,13 @@ class SudokuApp:
         Args:
             root: The Tkinter root window for the application.
         """
+        db_file = "sudoku.db"
+        self.db_handler = DatabaseHandler(db_file)
+        self.initialize_with_default_puzzles()
+
         self.root = root
         self.root.title("Sudoku App")
+
         self.board = Board()
         self.main_frame = tk.Frame(self.root, bg="black")
         self.main_frame.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
@@ -90,14 +97,7 @@ class SudokuApp:
         self.button_panel = ButtonPanel(self.main_frame, self.sudoku_board)
         self.button_panel.grid(row=1, column=0, padx=10, pady=10)
 
-        self.initialize_database()
         self.select_game_option()
-
-    def initialize_database(self):
-        """Initializes the SQLite database handler."""
-        db_file = "sudoku.db"
-        self.db_handler = DatabaseHandler(db_file)
-        self.initialize_with_default_puzzles()
 
     def initialize_with_default_puzzles(self):
         """Initializes the database with default Sudoku puzzles.

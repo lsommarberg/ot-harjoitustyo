@@ -95,3 +95,26 @@ class DatabaseHandler:
     def close_connection(self):
         """Closes the connection to the SQLite database."""
         self.conn.close()
+
+    @staticmethod
+    def initialize_database(db_file):
+        """Initialize the database by creating necessary tables if they don't exist.
+
+        Args:
+            db_file (str): The path to the SQLite database file.
+
+        """
+        conn = sqlite3.connect(db_file)
+        cursor = conn.cursor()
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS puzzles (
+                id INTEGER PRIMARY KEY,
+                puzzle TEXT NOT NULL,
+                difficulty TEXT
+            )
+        """
+        )
+        conn.commit()
+        conn.close()
+        
