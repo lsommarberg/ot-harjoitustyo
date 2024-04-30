@@ -1,12 +1,15 @@
 # Ohjelmistotekniikka, SudokuApp
 
+## Release
+- [Release 1](https://github.com/lsommarberg/ot-harjoitustyo/releases/tag/viikko5)
+- [Release 2](https://github.com/lsommarberg/ot-harjoitustyo/releases/tag/viikko6)
+
 ## Dokumentaatio:
 
 - [Määrittelydokumentti](documents/maarittely.md)
 - [Changelog](documents/changelog.md)
 - [Työaikakirjanpito](documents/tuntikirjanpito.md)
 - [Arkkitehtuuri](documents/arkkitehtuuri.md)
-  
 
 ## Asennus
 
