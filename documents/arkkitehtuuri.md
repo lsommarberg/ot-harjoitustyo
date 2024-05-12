@@ -189,4 +189,4 @@ Sovellus käyttää sqlite tietokantaa, johon tallennetaan pelattavat pelit, sek
 
 ## Ohjelman rakenteen heikkoudet
 
-Lopullinen rakenne voisi olla selkeämpi ja helpommin muokattavissa.
+Lopullinen rakenne voisi olla selkeämpi ja helpommin muokattavissa. Riippuvuudet olisi voitu suunnitella alusta alkaen paremmin.

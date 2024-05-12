@@ -3,7 +3,8 @@
 ## Release
 - [Release 1](https://github.com/lsommarberg/ot-harjoitustyo/releases/tag/viikko5)
 - [Release 2](https://github.com/lsommarberg/ot-harjoitustyo/releases/tag/viikko6)
-
+- [Release 3](https://github.com/lsommarberg/ot-harjoitustyo/releases/tag/loppupalautus)
+  
 ## Dokumentaatio:
 
 - [Määrittelydokumentti](documents/maarittely.md)
