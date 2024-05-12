@@ -39,3 +39,13 @@
 - Testattu DatabaseHandler-luokka
 - Kirjoitettu docstring luokkiin ja funktioihin.
 - Muokattu koodia yksinkertaisempaan muotoon vanhoissa luokissa.
+
+## Viikko 7
+
+- Käyttäjä voi jatkaa edellistä peliä, tai aloittaa pelin alusta
+  - Lisätty Return, Continue ja Restart-napit
+  - Käyttäjän viimeisin peli tallennetaan tietokantaan Return-nappia painettaessa
+- Refaktoroitu koodia
+  - Lisätty GameLogic-luokka hoitamaan käyttäjän syötteitä
+  - Lisätty SudokuGameManager-luokka, joka vastaa sovelluksen toiminnasta pelien välissä.
+- Testattu GameLogic ja SudokuGameManager-luokat

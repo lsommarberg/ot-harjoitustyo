@@ -17,6 +17,11 @@ class ButtonPanel(tk.Frame):
         )
         self.undo_button.grid(row=0, column=1, padx=5)
 
+        self.return_button = tk.Button(
+            self, text="Return", width=15, height=1, command=self.return_button_clicked
+        )
+        self.return_button.grid(row=0, column=2, padx=5)
+
     def undo_button_clicked(self):
         self.sudoku_board.undo_button()
 
@@ -29,3 +34,6 @@ class ButtonPanel(tk.Frame):
             self.notes_button.configure(bg="green")
         else:
             self.notes_button.config(bg=self.default_button_color)
+
+    def return_button_clicked(self):
+        self.event_generate("<<ReturnButton>>", when="tail")

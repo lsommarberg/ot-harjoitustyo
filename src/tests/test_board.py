@@ -33,14 +33,17 @@ class TestBoard(unittest.TestCase):
         result = board.get_cell(0, 2)
         self.assertEqual(result.get_value(), 1)
 
-    def test_make_move_for_locked_cell(self):
+    def test_clear_cell(self):
         board = Board()
         board.initialize_grid(self.example_puzzle)
-        set_value = board.make_move(0, 0, 1)
+        board.set_cell_value(0, 2, 1)
+        
+        board.clear_cell(0, 2)
 
-        result = board.get_cell(0, 0)
-        self.assertEqual(result.get_value(), 5)
-        self.assertFalse(set_value)
+        result = board.get_cell(0, 2)
+
+        self.assertEqual(result.get_value(), 0)
+
 
     def test_lock_cell(self):
         board = Board()
@@ -50,74 +53,13 @@ class TestBoard(unittest.TestCase):
         result = locked_cell.is_locked
         self.assertTrue(result)
 
-    def test_update_stack(self):
+    def test_clear_grid(self):
         board = Board()
 
         board.initialize_grid(self.example_puzzle)
-        board.update_stack()
+        board.clear_grid()
 
-        stack = board.undo_stack
+        cleared_grid_first_value = board.grid[0][0].get_value()
 
-        stack_instance = stack[0]
-        stack_instance_first_cell = stack_instance[0][0].get_value()
+        self.assertEqual(cleared_grid_first_value, 0)
 
-        first_cell = board.get_cell(0, 0).value
-
-        self.assertEqual(stack_instance_first_cell, first_cell)
-
-    def test_undo_move(self):
-        board = Board()
-        board.initialize_grid(self.example_puzzle)
-        board.update_stack()
-
-        board.make_move(0, 2, 1)
-
-        board.undo_move()
-
-        self.assertEqual(board.get_cell(0, 2).value, 0)
-
-    def test_undo_move_stack_is_full(self):
-        board = Board()
-
-        board.max_undo_length=3
-        board.update_stack()
-        board.make_move(0, 2, 1)
-
-        board.update_stack()
-        board.make_move(0, 2, 2)
-
-        board.update_stack()
-        board.make_move(0, 2, 3)
-
-        board.update_stack()
-        board.make_move(0, 2, 4)
-
-        board.undo_move()
-        board.undo_move()
-        board.undo_move()
-        board.undo_move()
-
-        self.assertEqual(board.get_cell(0, 2).value, 1)
-
-    def test_modify_notes_no_notes(self):
-        board = Board()
-        board.initialize_grid(self.example_puzzle)
-
-        board.modify_notes(0, 2, 1)
-
-        modified_cell_notes = board.get_cell(0, 2).get_notes()
-
-        expected_notes = [1, 0, 0, 0, 0, 0, 0, 0, 0]
-        self.assertEqual(modified_cell_notes, expected_notes)
-
-    def test_modify_notes_remove_note(self):
-        board = Board()
-        board.initialize_grid(self.example_puzzle)
-
-        board.modify_notes(0, 2, 1)
-        board.modify_notes(0, 2, 1)
-
-        modified_cell_notes = board.get_cell(0, 2).get_notes()
-
-        expected_notes = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-        self.assertEqual(modified_cell_notes, expected_notes)

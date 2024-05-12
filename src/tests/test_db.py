@@ -1,5 +1,6 @@
 import unittest
 from database import DatabaseHandler
+from cell import Cell
 
 
 class TestDatabaseHandler(unittest.TestCase):
@@ -28,3 +29,24 @@ class TestDatabaseHandler(unittest.TestCase):
             ),
         )
 
+    def test_serialize_and_insert_and_get_game_state(self):
+        last_game_state = [[Cell() for _ in range(9)] for _ in range(9)]
+
+        serialized_state = self.db_handler.serialize_game_state(last_game_state)
+
+        self.db_handler.insert_game_state(serialized_state)
+
+        last_state = self.db_handler.get_last_game_state()
+
+        self.assertIsNotNone(last_state)
+        game_is_saved = self.db_handler.has_saved_game()
+        self.assertTrue(game_is_saved)
+
+
+    def test_get_game_state_empty_db(self):
+        self.db_handler.clear_game_state_table()
+        last_state = self.db_handler.get_last_game_state()
+
+        self.assertIsNone(last_state)
+        game_is_saved = self.db_handler.has_saved_game()
+        self.assertFalse(game_is_saved)

@@ -10,6 +10,7 @@
 - [Changelog](documents/changelog.md)
 - [Työaikakirjanpito](documents/tuntikirjanpito.md)
 - [Arkkitehtuuri](documents/arkkitehtuuri.md)
+- [Käyttöohje](documents/kayttoohje.md)
 
 ## Asennus
 
@@ -28,7 +29,6 @@
     ```
     poetry run invoke start
     ```
-5. Voit pelata sudokua klikkaamalla ruutua ja syöttämällä ruutuihin arvoja 1-9. Voit tyhjentää ruudun arvolla 0, ja peruuttaa siirron 'Undo'-napista. Muistiinpanot saat päälle ja pois 'Notes'-napista.
 
 
 ## Testaus

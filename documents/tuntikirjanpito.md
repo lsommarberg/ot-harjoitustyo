@@ -16,4 +16,10 @@
 | 29.4. | 3      | tietokanta käyttöön |
 | 29.4. | 1      | tietokannan testaus |
 | 30.4. | 4      | docstring, dokumentaatio, testaus etätyöpöydällä |
-| Yht.  | 43 
+| 2.5.  | 4      | koodin refaktorointi |
+| 6.5.  | 6      | Return/continue/restart |
+| 9.5.  | 3      | Refaktorointi |
+| 10.5. | 3      | Testaus |
+| 11.5. | 4      | Refaktorointi/Testaus |
+| 12.5. | 6      | Dokumentaatio, pylint yms. |
+| Yht.  | 69

@@ -1,10 +1,10 @@
 import tkinter as tk
 
 
-class SudokuBoard(tk.Frame):
+class SudokuBoardUI(tk.Frame):
     """A graphical representation of a Sudoku board within the main frame window."""
 
-    def __init__(self, parent, board):
+    def __init__(self, parent, board, game_logic):
         """Constructor
 
         Attributes:
@@ -16,9 +16,11 @@ class SudokuBoard(tk.Frame):
             board: Board object representing the Sudoku puzzle.
 
         """
-        super().__init__(parent)
+        super().__init__(parent, bg="black")
         self.board = board
         self.buttons = [[None for _ in range(9)] for _ in range(9)]
+
+        self.game_logic = game_logic
 
         self.create_buttons()
 
@@ -73,13 +75,16 @@ class SudokuBoard(tk.Frame):
     def undo_button(self):
         """Handle the event when the "Undo" button is clicked."""
 
-        self.board.undo_move()
+        self.game_logic.undo_move()
         self.update_buttons()
 
     def notes_button(self):
         """Handle the event when the "Notes" button is clicked."""
 
         self.notes_on = not self.notes_on
+
+    def completed_game(self):
+        self.event_generate("<<GameCompleted>>", when="tail")
 
 
 class SudokuButton(tk.Button):
@@ -156,15 +161,20 @@ class SudokuButton(tk.Button):
 
         if event.char.isdigit():
             value = int(event.char)
-
-            if value:
-                self.board.update_stack()
+            if value == 0:
+                self.master.game_logic.update_stack()
+                self.board.clear_cell(self.row, self.col)
+                self.master.update_buttons()
+            else:
+                self.master.game_logic.update_stack()
                 if self.master.notes_on:
-                    self.board.modify_notes(self.row, self.col, value)
+                    self.master.game_logic.modify_notes(self.row, self.col, value)
                 else:
-                    self.board.make_move(self.row, self.col, value)
+                    self.master.game_logic.make_move(self.row, self.col, value)
 
                 self.master.update_buttons()
+                if self.board.is_game_completed:
+                    self.master.completed_game()
 
     def on_focus_in(self, _):
         """Callback function called when the button gains focus."""
